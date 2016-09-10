@@ -1,0 +1,22 @@
+/*
+Currently appears before semantic so cannot override anything
+*/
+
+body {
+  margin: 1em;
+}
+
+#main {
+  padding: 1em;
+}
+
+tr,
+h4 {
+  font-size: 0.9em !important;
+}
+
+footer {
+  border-top: 1px #ECECEC solid;
+  margin: 1em;
+  padding: 0.5em;
+}
