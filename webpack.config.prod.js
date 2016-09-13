@@ -2,7 +2,7 @@
 // For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import WebpackMd5Hash from 'webpack-md5-hash';
+//import WebpackMd5Hash from 'webpack-md5-hash';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
@@ -23,11 +23,11 @@ export default {
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: '[name].[chunkhash].js'
+    filename: '[name].js'
   },
   plugins: [
     // Hash the files using MD5 so that their names change when the content changes.
-    new WebpackMd5Hash(),
+    //new WebpackMd5Hash(),
 
     // Optimize the order that items are bundled. This assures the hash is deterministic.
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -36,7 +36,7 @@ export default {
     new webpack.DefinePlugin(GLOBALS),
 
     // Generate an external css file with a hash in the filename
-    new ExtractTextPlugin('[name].[contenthash].css'),
+    new ExtractTextPlugin('[name].css'),
 
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
