@@ -6,13 +6,11 @@ body {
   margin: 1em;
 }
 
-#main {
-  padding: 1em;
-}
-
-tr,
-h4 {
-  font-size: 0.9em !important;
+/*
+  Deal with line breaks without fussing with <br /> or <p></p> tags.
+*/
+.description {
+  white-space: pre-wrap;
 }
 
 footer {
