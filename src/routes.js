@@ -3,26 +3,18 @@ import {Route, IndexRoute} from 'react-router';
 
 // Why do these require a suffix now?
 import App from './containers/App.jsx';
-import List from './components/List.jsx';
-import Edit from './components/Edit.jsx';
-import New from './components/New.jsx';
-import View from './components/View.jsx';
-
-/*
-  / - List
-  /view/{id} - View
-  /edit/{id} - Edit
-  /new - New (id will be undefined)
-*/
+import RecipePage from './components/recipes/RecipePage.jsx';
+import RecipeListPage from './components/recipes/RecipeListPage.jsx';
+import ManageRecipePage from './components/recipes/ManageRecipePage.jsx';
 
 const NotFoundPage = () => <div>Not Found</div>;
 
 export default (
   <Route path="/" component={App}>
-    <IndexRoute component={List}/>
-    <Route path="/create" component={New}/>
-    <Route path="/edit/:id" component={Edit}/>
-    <Route path="/view/:id" component={View}/>
+    <IndexRoute component={RecipeListPage}/>
+    <Route path="/recipe" component={ManageRecipePage}/>
+    <Route path="/recipe/:id" component={RecipePage}/>
+    <Route path="/recipe/manage/:id" component={ManageRecipePage}/>
     <Route path="*" component={NotFoundPage}/>
   </Route>
 );

@@ -1,6 +1,9 @@
 import React from 'react';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Link, IndexLink} from 'react-router';
+
+import * as recipeActions from '../actions/recipeActions';
 
 /*
   This component is essentially the _layout for the components rendered
@@ -8,8 +11,7 @@ import {Link, IndexLink} from 'react-router';
 */
 
 // Navigation and _layout of entire SPA
-const App = props => {
-  const {recipes, dispatch} = props;
+const App = ({children, recipes, actions}) => {
 
   return (
     <div className="ui aligned segment">
@@ -18,13 +20,13 @@ const App = props => {
       <div className="ui container">
         <div className="ui large secondary menu">
           <Link to='/' className="active item">Your Recipes</Link>
-          <Link to='/create' className="item">Add Recipe</Link>
+          <Link to='/recipe' className="item">Add Recipe</Link>
         </div>
       </div>
 
     {React.Children.map(
-      props.children,
-      child => React.cloneElement(child, {recipes, dispatch})
+      children,
+      child => React.cloneElement(child, {recipes, actions})
     )}
 
     </div>
@@ -33,7 +35,8 @@ const App = props => {
 
 App.propTypes = {
   children: React.PropTypes.element,
-  recipes: React.PropTypes.array.isRequired
+  recipes: React.PropTypes.array.isRequired,
+  actions: React.PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -42,7 +45,11 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-const mapPropsToDispatch = (dispatch) => {};
+const mapPropsToDispatch = (dispatch) => {
+  return {
+    actions: bindActionCreators(recipeActions, dispatch)
+  }
+};
 
 // Connect to redux
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapPropsToDispatch)(App);

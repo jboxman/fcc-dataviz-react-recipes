@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 
 const ListItem = props => {
   const {id, name} = props;
-  const link = `/view/${id}`;
+  const link = `/recipe/${id}`;
 
   return (
     <div key={id} className="item">

@@ -5,11 +5,14 @@
 import {createStore, compose, applyMiddleware} from 'redux';
 import reduxImmutableStateInvariant from 'redux-immutable-state-invariant';
 import thunkMiddleware from 'redux-thunk';
+
+import persistToForage from '../middlewares/persistToForage';
 import rootReducer from '../reducers';
 
 export default function configureStore(initialState) {
   const middewares = [
     // Add other middleware on this line...
+    persistToForage,
 
     // Redux middleware that spits an error on you when you try to mutate your state either inside a dispatch or between dispatches.
     reduxImmutableStateInvariant(),

@@ -18,6 +18,9 @@ export default function recipeReducer(state = initialState.recipes, action = {})
   //console.log(`${type}: ${JSON.stringify(payload)}`);
 
   switch (type) {
+    case types.LOAD_RECIPES_SUCCESS:
+      return payload;
+
     case types.CREATE_RECIPE:
       return state.concat(payload);
 
