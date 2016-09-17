@@ -25,7 +25,7 @@ store.dispatch(loadRecipes());
 
 // https://github.com/ReactTraining/react-router/issues/353#issuecomment-181786502
 const browserHistory = useRouterHistory(createHistory)({
-  basename: process.env.NODE_ENV == 'development' ? '' : '/app'
+  basename: process.env.NODE_ENV == 'development' ? '' : '/fcc-dataviz-react-recipes/app'
 });
 
 // Create an enhanced history that syncs navigation events with the store
